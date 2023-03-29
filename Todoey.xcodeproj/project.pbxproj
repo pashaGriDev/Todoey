@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		10FA1AF229D47F16006C519C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA1AF129D47F16006C519C /* AppDelegate.swift */; };
 		10FA1AF429D47F16006C519C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA1AF329D47F16006C519C /* SceneDelegate.swift */; };
-		10FA1AF629D47F16006C519C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA1AF529D47F16006C519C /* ViewController.swift */; };
 		10FA1AF929D47F16006C519C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10FA1AF729D47F16006C519C /* Main.storyboard */; };
 		10FA1AFB29D47F17006C519C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10FA1AFA29D47F17006C519C /* Assets.xcassets */; };
 		10FA1AFE29D47F17006C519C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10FA1AFC29D47F17006C519C /* LaunchScreen.storyboard */; };
+		10FA1B0629D47FB5006C519C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA1B0529D47FB5006C519C /* Constants.swift */; };
+		10FA1B0D29D4805F006C519C /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA1B0C29D4805F006C519C /* CategoryViewController.swift */; };
+		10FA1B0F29D48080006C519C /* TodoeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA1B0E29D48080006C519C /* TodoeyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		10FA1AEE29D47F16006C519C /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10FA1AF129D47F16006C519C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10FA1AF329D47F16006C519C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		10FA1AF529D47F16006C519C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		10FA1AF829D47F16006C519C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10FA1AFA29D47F17006C519C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10FA1AFD29D47F17006C519C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10FA1AFF29D47F17006C519C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10FA1B0529D47FB5006C519C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		10FA1B0C29D4805F006C519C /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		10FA1B0E29D48080006C519C /* TodoeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoeyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,49 @@
 		10FA1AF029D47F16006C519C /* Todoey */ = {
 			isa = PBXGroup;
 			children = (
-				10FA1AF129D47F16006C519C /* AppDelegate.swift */,
-				10FA1AF329D47F16006C519C /* SceneDelegate.swift */,
-				10FA1AF529D47F16006C519C /* ViewController.swift */,
-				10FA1AF729D47F16006C519C /* Main.storyboard */,
+				10FA1B0A29D4800E006C519C /* Application */,
+				10FA1B0929D48005006C519C /* Model */,
+				10FA1B0829D47FFE006C519C /* View */,
+				10FA1B0729D47FF1006C519C /* Controller */,
+				10FA1B0529D47FB5006C519C /* Constants.swift */,
 				10FA1AFA29D47F17006C519C /* Assets.xcassets */,
 				10FA1AFC29D47F17006C519C /* LaunchScreen.storyboard */,
 				10FA1AFF29D47F17006C519C /* Info.plist */,
 			);
 			path = Todoey;
+			sourceTree = "<group>";
+		};
+		10FA1B0729D47FF1006C519C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				10FA1B0C29D4805F006C519C /* CategoryViewController.swift */,
+				10FA1B0E29D48080006C519C /* TodoeyViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		10FA1B0829D47FFE006C519C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		10FA1B0929D48005006C519C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10FA1AF729D47F16006C519C /* Main.storyboard */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		10FA1B0A29D4800E006C519C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				10FA1AF129D47F16006C519C /* AppDelegate.swift */,
+				10FA1AF329D47F16006C519C /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10FA1AF629D47F16006C519C /* ViewController.swift in Sources */,
+				10FA1B0D29D4805F006C519C /* CategoryViewController.swift in Sources */,
 				10FA1AF229D47F16006C519C /* AppDelegate.swift in Sources */,
+				10FA1B0F29D48080006C519C /* TodoeyViewController.swift in Sources */,
 				10FA1AF429D47F16006C519C /* SceneDelegate.swift in Sources */,
+				10FA1B0629D47FB5006C519C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +335,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +343,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.babaika.Todoey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,6 +367,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +375,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.babaika.Todoey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
