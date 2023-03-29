@@ -87,10 +87,18 @@ extension TodoeyViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        todoItems?[indexPath.row].done = !(todoItems?[indexPath.row].done)!
+        if let item = todoItems?[indexPath.row] {
+            do {
+                try realm.write {
+                    item.done = !item.done
+                }
+            } catch {
+                print("Ошибка сохранения статуса \(error)")
+            }
+        }
         
-//        saveItems()
         tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
     }
     
 }
