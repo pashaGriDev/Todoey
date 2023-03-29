@@ -12,12 +12,13 @@ class CategoryViewController: UITableViewController {
     
     let realm = try! Realm()
     
-    var categoryArray: [Category] = []
+    var categoryArray: Results<Category>?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadCategories()
     }
 
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -30,8 +31,7 @@ class CategoryViewController: UITableViewController {
             
             let newCategory = Category()
             newCategory.name = text
-            
-            self.categoryArray.append(newCategory)
+
             self.save(newCategory)
         }
         
@@ -63,8 +63,9 @@ extension CategoryViewController {
         tableView.reloadData()
     }
 
-    func loadData() {
-        
+    func loadCategories() {
+        categoryArray = realm.objects(Category.self)
+        tableView.reloadData()
     }
 }
 
@@ -72,12 +73,12 @@ extension CategoryViewController {
 
 extension CategoryViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryArray.count
+        return categoryArray?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellId.categoryIdentifier, for: indexPath)
-        cell.textLabel?.text = categoryArray[indexPath.row].name
+        cell.textLabel?.text = categoryArray?[indexPath.row].name ?? "No Categories"
         return cell
     }
 }
@@ -97,10 +98,10 @@ extension CategoryViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let destinationVC = segue.destination as! TodoeyViewController
-//
-//        if let indexPath = tableView.indexPathForSelectedRow {
-//            // data transfer
-//        }
+        let destinationVC = segue.destination as! TodoeyViewController
+
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCategory = categoryArray?[indexPath.row]
+        }
     }
 }

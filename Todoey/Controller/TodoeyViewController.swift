@@ -5,14 +5,21 @@
 //  Created by Павел Грицков on 29.03.23.
 //
 
-import Foundation
 import UIKit
+import RealmSwift
 
 class TodoeyViewController: UITableViewController {
    
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var array = ["1"]
+    var todoItems: Results<Item>?
+    let realm = try! Realm()
+    
+    var selectedCategory: Category? {
+        didSet {
+          loadItems()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +32,25 @@ class TodoeyViewController: UITableViewController {
         let alert = UIAlertController(title: K.Alert.title, message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: K.Alert.actionTitle, style: .default) { action in
             let text = localTextField.text ?? ""
-            print(text)
+
+            if text == "" { return } // проверка пустой строки
+            if let currentCategory = self.selectedCategory {
+                do {
+                    try self.realm.write { // записать
+                        let newItem = Item()
+                        newItem.title = text
+                        currentCategory.items.append(newItem)
+                    }
+                } catch {
+                    print("Ошибка \(error)")
+                }
+            }
+            
+            self.tableView.reloadData()
+//          self.saveItems()
+            
         }
+        
         alert.addTextField { textField in
             textField.placeholder = "Search items"
             localTextField = textField
@@ -41,12 +65,32 @@ class TodoeyViewController: UITableViewController {
     }
 }
 
+// MARK: - Save and load data
+
+extension TodoeyViewController {
+    
+    func saveItems() {
+        
+    }
+
+    func loadItems() {
+        
+        todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
+        
+        tableView.reloadData()
+    }
+}
+
 // MARK: - UITableViewDelegate
 
 extension TodoeyViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("pressed cell")
+        
+//        todoItems?[indexPath.row].done = !(todoItems?[indexPath.row].done)!
+        
+//        saveItems()
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
@@ -56,12 +100,20 @@ extension TodoeyViewController {
 
 extension TodoeyViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return todoItems?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellId.ItemIdentifier, for: indexPath)
-        cell.textLabel?.text = array[indexPath.row]
+        
+        if let item = todoItems?[indexPath.row] {
+            cell.textLabel?.text = item.title
+            
+            cell.accessoryType = item.done ? .checkmark : .none
+        } else {
+            cell.textLabel?.text = todoItems?[indexPath.row].title ?? "No item"
+        }
+        
         return cell
     }
 }
