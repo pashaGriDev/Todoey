@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // расположения базы данных Realm
-//        print(Realm.Configuration.defaultConfiguration.fileURL)
+        print(Realm.Configuration.defaultConfiguration.fileURL)
+        
+        do {
+            let realm = try Realm()
+        } catch {
+            print("Ошибка Realm \(error)")
+        }
         
         return true
     }

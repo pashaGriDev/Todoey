@@ -6,15 +6,13 @@
 //
 
 import UIKit
-
-/*
- Сталкнулся с проблемой что xcode  не мог найти MyCategory (CoreData Emtity)
- Регение - закрыть и снова откруть xcode
- */
+import RealmSwift
 
 class CategoryViewController: UITableViewController {
     
-    var categoryArray = ["Lola", "Bob"]
+    let realm = try! Realm()
+    
+    var categoryArray: [Category] = []
     
 
     override func viewDidLoad() {
@@ -29,7 +27,12 @@ class CategoryViewController: UITableViewController {
             let text = alert?.textFields?.first?.text ?? ""
             
             if text == "" { return } // проверка на пустую строку
-
+            
+            let newCategory = Category()
+            newCategory.name = text
+            
+            self.categoryArray.append(newCategory)
+            self.save(newCategory)
         }
         
         alert.addTextField { textField in
@@ -44,6 +47,27 @@ class CategoryViewController: UITableViewController {
     }
 }
 
+// MARK: - Save and load data
+
+extension CategoryViewController {
+
+    func save(_ category: Category) {
+        do {
+            try realm.write {
+                realm.add(category)
+            }
+        } catch {
+            print("Ошибка сохранения \(error)")
+        }
+        
+        tableView.reloadData()
+    }
+
+    func loadData() {
+        
+    }
+}
+
 // MARK: - UITableViewDataSource
 
 extension CategoryViewController {
@@ -53,7 +77,7 @@ extension CategoryViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellId.categoryIdentifier, for: indexPath)
-        cell.textLabel?.text = categoryArray[indexPath.row]
+        cell.textLabel?.text = categoryArray[indexPath.row].name
         return cell
     }
 }
