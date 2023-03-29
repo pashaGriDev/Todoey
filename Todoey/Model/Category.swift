@@ -10,7 +10,14 @@ import RealmSwift
 
 class Category: Object {
     @objc dynamic var name: String = ""
-    
+
     // связь один ко многим с Item
     let items = List<Item>() // массив Item типа Array<String>
 }
+
+//class Category: Object {
+//    @Persisted var name: String = ""
+//
+//    // связь один ко многим с Item
+//    @Persisted var items = List<Item>() // массив Item типа Array<String>
+//}

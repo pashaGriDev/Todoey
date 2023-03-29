@@ -18,6 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // расположения базы данных Realm
 //        print(Realm.Configuration.defaultConfiguration.fileURL)
         
+        // блок миграции ниже статья про это
+        // https://www.selmanalpdundar.com/solution-of-realm-migration-error-code-10.html
+        let config = Realm.Configuration(
+            schemaVersion: 2,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 2) {
+                }
+            })
+
+        Realm.Configuration.defaultConfiguration = config
+        
         do {
             let _ = try Realm()
         } catch {

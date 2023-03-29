@@ -9,15 +9,17 @@ import UIKit
 import RealmSwift
 
 class CategoryViewController: UITableViewController {
-    
-    let realm = try! Realm()
+
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
     
     var categoryArray: Results<Category>?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         loadCategories()
     }
 

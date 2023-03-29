@@ -39,6 +39,7 @@ class TodoeyViewController: UITableViewController {
                     try self.realm.write { // записать
                         let newItem = Item()
                         newItem.title = text
+                        newItem.dataCreated = Date()
                         currentCategory.items.append(newItem)
                     }
                 } catch {
@@ -91,6 +92,7 @@ extension TodoeyViewController {
             do {
                 try realm.write {
                     item.done = !item.done
+//                    realm.delete(item) // удаление обьекта
                 }
             } catch {
                 print("Ошибка сохранения статуса \(error)")
@@ -130,6 +132,23 @@ extension TodoeyViewController {
 
 extension TodoeyViewController: UISearchBarDelegate {
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // поиск по title содержащий searchBar.text и отсортированный по title в алфавитном порядке
+        todoItems = todoItems?.filter("title CONTAINS %@", searchBar.text!).sorted(byKeyPath: "dataCreated", ascending: true)
+        
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // если текст удали то отключает использование searchBar
+        if searchBar.text?.count == 0 {
+            loadItems()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
 }
 
 
