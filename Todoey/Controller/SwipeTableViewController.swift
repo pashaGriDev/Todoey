@@ -33,13 +33,8 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         guard orientation == .right else { return nil }
         
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            
-            // удаление ячейки
-            print("Delete cell")
+
             self.updateModel(at: indexPath)
-//            if let category = self.categoryArray?[indexPath.row] {
-//                self.delete(category)
-//            }
         }
         // customize the action appearance
         deleteAction.image = UIImage(named: "delete")
@@ -55,6 +50,6 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
     }
     
     func updateModel(at indexPath: IndexPath) {
-        
+        print("updateModel - super class")
     }
 }

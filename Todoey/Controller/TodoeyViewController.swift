@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class TodoeyViewController: UITableViewController {
+class TodoeyViewController: SwipeTableViewController {
    
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -43,13 +43,10 @@ class TodoeyViewController: UITableViewController {
                         currentCategory.items.append(newItem)
                     }
                 } catch {
-                    print("Ошибка \(error)")
+                    print("Ошибка сохранения \(error)")
                 }
             }
-            
             self.tableView.reloadData()
-//          self.saveItems()
-            
         }
         
         alert.addTextField { textField in
@@ -61,24 +58,32 @@ class TodoeyViewController: UITableViewController {
         present(alert, animated: true)
     }
     
-    deinit {
-        print("deinit")
-    }
-}
-
-// MARK: - Save and load data
-
-extension TodoeyViewController {
+    // MARK: - Delete items
     
-    func saveItems() {
-        
-    }
+    override func updateModel(at indexPath: IndexPath) {
+        super.updateModel(at: indexPath)
 
+        if let item = todoItems?[indexPath.row] {
+            do {
+                try realm.write {
+                    realm.delete(item)
+                }
+            } catch {
+                print("Ошибка удаления \(error)")
+            }
+        }
+    }
+    
+    // MARK: - Load items
+    
     func loadItems() {
         
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
-        
         tableView.reloadData()
+    }
+    
+    deinit {
+        print("deinit")
     }
 }
 
@@ -114,7 +119,7 @@ extension TodoeyViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellId.ItemIdentifier, for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
