@@ -20,14 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // блок миграции ниже статья про это
         // https://www.selmanalpdundar.com/solution-of-realm-migration-error-code-10.html
-        let config = Realm.Configuration(
-            schemaVersion: 2,
-            migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 2) {
-                }
-            })
+//        let config = Realm.Configuration(
+//            schemaVersion: 1,
+//            migrationBlock: { migration, oldSchemaVersion in
+//                if (oldSchemaVersion < 1) {
+//                }
+//            })
+        
+        // еще один вариант миграции удалить приложение из симулятора, а потом установить заново.
 
-        Realm.Configuration.defaultConfiguration = config
+//        Realm.Configuration.defaultConfiguration = config
         
         do {
             let _ = try Realm()
