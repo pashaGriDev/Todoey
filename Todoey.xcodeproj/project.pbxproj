@@ -21,6 +21,7 @@
 		10FA1B1829D493A0006C519C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA1B1729D493A0006C519C /* Category.swift */; };
 		10FA1B1A29D493AB006C519C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA1B1929D493AB006C519C /* Item.swift */; };
 		10FA1B1D29D5C852006C519C /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10FA1B1C29D5C852006C519C /* SwipeCellKit */; };
+		10FA1B1F29D5FB0B006C519C /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA1B1E29D5FB0B006C519C /* SwipeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		10FA1B1029D48AA9006C519C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		10FA1B1729D493A0006C519C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		10FA1B1929D493AB006C519C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		10FA1B1E29D5FB0B006C519C /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		10FA1B0729D47FF1006C519C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				10FA1B1E29D5FB0B006C519C /* SwipeTableViewController.swift */,
 				10FA1B0C29D4805F006C519C /* CategoryViewController.swift */,
 				10FA1B0E29D48080006C519C /* TodoeyViewController.swift */,
 			);
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10FA1B1F29D5FB0B006C519C /* SwipeTableViewController.swift in Sources */,
 				10FA1B0D29D4805F006C519C /* CategoryViewController.swift in Sources */,
 				10FA1AF229D47F16006C519C /* AppDelegate.swift in Sources */,
 				10FA1B0F29D48080006C519C /* TodoeyViewController.swift in Sources */,
