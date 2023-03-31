@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1051B7FD29D716AD00564E91 /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051B7FC29D716AD00564E91 /* UIColor + ext.swift */; };
+		1051B80029D717BE00564E91 /* RandomColor in Frameworks */ = {isa = PBXBuildFile; productRef = 1051B7FF29D717BE00564E91 /* RandomColor */; };
 		10FA1AF229D47F16006C519C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA1AF129D47F16006C519C /* AppDelegate.swift */; };
 		10FA1AF429D47F16006C519C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FA1AF329D47F16006C519C /* SceneDelegate.swift */; };
 		10FA1AF929D47F16006C519C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10FA1AF729D47F16006C519C /* Main.storyboard */; };
@@ -25,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1051B7FC29D716AD00564E91 /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
 		10FA1AEE29D47F16006C519C /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10FA1AF129D47F16006C519C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10FA1AF329D47F16006C519C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 				10FA1B1629D48CA7006C519C /* RealmSwift in Frameworks */,
 				10FA1B1D29D5C852006C519C /* SwipeCellKit in Frameworks */,
 				10FA1B1429D48CA7006C519C /* Realm in Frameworks */,
+				1051B80029D717BE00564E91 /* RandomColor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +84,7 @@
 				10FA1B0829D47FFE006C519C /* View */,
 				10FA1B0729D47FF1006C519C /* Controller */,
 				10FA1B0529D47FB5006C519C /* Constants.swift */,
+				1051B7FC29D716AD00564E91 /* UIColor + ext.swift */,
 				10FA1AFA29D47F17006C519C /* Assets.xcassets */,
 				10FA1AFC29D47F17006C519C /* LaunchScreen.storyboard */,
 				10FA1AFF29D47F17006C519C /* Info.plist */,
@@ -143,6 +148,7 @@
 				10FA1B1329D48CA7006C519C /* Realm */,
 				10FA1B1529D48CA7006C519C /* RealmSwift */,
 				10FA1B1C29D5C852006C519C /* SwipeCellKit */,
+				1051B7FF29D717BE00564E91 /* RandomColor */,
 			);
 			productName = Todoey;
 			productReference = 10FA1AEE29D47F16006C519C /* Todoey.app */;
@@ -175,6 +181,7 @@
 			packageReferences = (
 				10FA1B1229D48CA7006C519C /* XCRemoteSwiftPackageReference "realm-swift" */,
 				10FA1B1B29D5C852006C519C /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
+				1051B7FE29D717BE00564E91 /* XCRemoteSwiftPackageReference "RandomColorSwift" */,
 			);
 			productRefGroup = 10FA1AEF29D47F16006C519C /* Products */;
 			projectDirPath = "";
@@ -210,6 +217,7 @@
 				10FA1B0F29D48080006C519C /* TodoeyViewController.swift in Sources */,
 				10FA1AF429D47F16006C519C /* SceneDelegate.swift in Sources */,
 				10FA1B1A29D493AB006C519C /* Item.swift in Sources */,
+				1051B7FD29D716AD00564E91 /* UIColor + ext.swift in Sources */,
 				10FA1B0629D47FB5006C519C /* Constants.swift in Sources */,
 				10FA1B1829D493A0006C519C /* Category.swift in Sources */,
 			);
@@ -439,6 +447,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1051B7FE29D717BE00564E91 /* XCRemoteSwiftPackageReference "RandomColorSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/RandomColorSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		10FA1B1229D48CA7006C519C /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -458,6 +474,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1051B7FF29D717BE00564E91 /* RandomColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1051B7FE29D717BE00564E91 /* XCRemoteSwiftPackageReference "RandomColorSwift" */;
+			productName = RandomColor;
+		};
 		10FA1B1329D48CA7006C519C /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 10FA1B1229D48CA7006C519C /* XCRemoteSwiftPackageReference "realm-swift" */;

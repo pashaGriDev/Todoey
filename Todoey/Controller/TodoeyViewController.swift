@@ -24,6 +24,7 @@ class TodoeyViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rowHeight = 80.0
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -97,17 +98,14 @@ extension TodoeyViewController {
             do {
                 try realm.write {
                     item.done = !item.done
-//                    realm.delete(item) // удаление обьекта
                 }
             } catch {
                 print("Ошибка сохранения статуса \(error)")
             }
         }
-        
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
     }
-    
 }
 
 
@@ -123,7 +121,6 @@ extension TodoeyViewController {
         
         if let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
-            
             cell.accessoryType = item.done ? .checkmark : .none
         } else {
             cell.textLabel?.text = todoItems?[indexPath.row].title ?? "No item"

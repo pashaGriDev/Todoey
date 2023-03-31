@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "randomcolorswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/RandomColorSwift.git",
+      "state" : {
+        "revision" : "ab01c6eff99f40c5e23ffcb957eb3971f937f106",
+        "version" : "2.0.0"
+      }
+    },
+    {
       "identity" : "realm-core",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-core.git",

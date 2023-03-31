@@ -18,7 +18,7 @@ struct K {
     
     enum Alert{
         static let title = "Add new todoey"
-        static let actionTitle = "Add item"
+        static let actionTitle = "Add"
     }
     
     enum segue {

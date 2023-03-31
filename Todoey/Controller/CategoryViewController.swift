@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import RandomColor
 
 class CategoryViewController: SwipeTableViewController {
 
@@ -21,6 +22,7 @@ class CategoryViewController: SwipeTableViewController {
         super.viewDidLoad()
         
         tableView.rowHeight = 80.0
+        tableView.separatorStyle = .none
         loadCategories()
     }
 
@@ -33,7 +35,12 @@ class CategoryViewController: SwipeTableViewController {
             if text == "" { return } // проверка на пустую строку
             
             let newCategory = Category()
+            let color = randomColor(hue: .blue, luminosity: .light)
+            let hexColorName = color.hexString ?? "#FFFFFF"
+            
             newCategory.name = text
+            newCategory.hexColorName = hexColorName
+            
 
             self.save(newCategory)
         }
@@ -101,7 +108,12 @@ extension CategoryViewController {
         // выпоняем супер, потом дополняем в тут в подклассе
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
-        cell.textLabel?.text = categoryArray?[indexPath.row].name ?? "No Categories"
+        if let category = categoryArray?[indexPath.row] {
+            cell.textLabel?.text = category.name
+            cell.backgroundColor = UIColor(category.hexColorName)
+        } else {
+            cell.textLabel?.text = "No Categories"
+        }
 
         return cell
     }
