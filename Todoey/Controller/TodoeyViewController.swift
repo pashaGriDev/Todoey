@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import RandomColor
 
 class TodoeyViewController: SwipeTableViewController {
    
@@ -25,13 +26,12 @@ class TodoeyViewController: SwipeTableViewController {
         super.viewDidLoad()
         
         tableView.rowHeight = 80.0
-        
-//        searchBar.barTintColor = .systemBlue
-//        searchBar.searchBarStyle = .prominent
-        searchBar.tintColor = .red // курсор в панели поиска
-        searchBar.barStyle = .default
-        
-        print(#function)
+        settingUI()
+    }
+    
+    func settingUI() {
+        // appearance searchBar
+        searchBar.barTintColor = randomColor(hue: .blue, luminosity: .light)
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -88,7 +88,6 @@ class TodoeyViewController: SwipeTableViewController {
         
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
         tableView.reloadData()
-        print(selectedCategory?.hexColorName)
     }
     
     deinit {
@@ -116,7 +115,6 @@ extension TodoeyViewController {
     }
 }
 
-
 // MARK: - UITableViewDataSource
 
 extension TodoeyViewController {
@@ -133,6 +131,10 @@ extension TodoeyViewController {
         } else {
             cell.textLabel?.text = todoItems?[indexPath.row].title ?? "No item"
         }
+        
+        let index = indexPath.row
+        let color = randomColor(hue: .blue, luminosity: .light)
+        cell.backgroundColor = color
         
         return cell
     }
