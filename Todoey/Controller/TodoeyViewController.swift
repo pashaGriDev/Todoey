@@ -132,7 +132,6 @@ extension TodoeyViewController {
             cell.textLabel?.text = todoItems?[indexPath.row].title ?? "No item"
         }
         
-        let index = indexPath.row
         let color = randomColor(hue: .blue, luminosity: .light)
         cell.backgroundColor = color
         
