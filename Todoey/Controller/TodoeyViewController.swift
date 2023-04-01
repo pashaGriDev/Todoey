@@ -25,6 +25,13 @@ class TodoeyViewController: SwipeTableViewController {
         super.viewDidLoad()
         
         tableView.rowHeight = 80.0
+        
+//        searchBar.barTintColor = .systemBlue
+//        searchBar.searchBarStyle = .prominent
+        searchBar.tintColor = .red // курсор в панели поиска
+        searchBar.barStyle = .default
+        
+        print(#function)
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -81,6 +88,7 @@ class TodoeyViewController: SwipeTableViewController {
         
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
         tableView.reloadData()
+        print(selectedCategory?.hexColorName)
     }
     
     deinit {

@@ -25,6 +25,30 @@ class CategoryViewController: SwipeTableViewController {
         tableView.separatorStyle = .none
         loadCategories()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        settingUI()
+    }
+    
+    func settingUI() {
+        // настройка фона и цвета заголовка
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .systemBlue
+        appearance.titleTextAttributes = [.foregroundColor : UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        // непрозрачность
+        navigationController?.navigationBar.isTranslucent = false
+        // большой нав бар
+        navigationController?.navigationBar.prefersLargeTitles = true
+        // темный светлый стить
+        navigationController?.navigationBar.barStyle = .black
+        // цвет кнопок в нав баре
+        navigationController?.navigationBar.tintColor = .white
+    }
 
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: K.Alert.title, message: "", preferredStyle: .alert)
